@@ -19,8 +19,17 @@ def floodFill(posX: int, posY: int, tablero: list[list[Casilla]], minas: list[Mi
 		elif tablero[posX][posY]['minas'] == 0:
 			# Destapar casillas de alrededor
 			posicionesAlrededor = [-1, 0, 1]
+
 			for posicionX in posicionesAlrededor:
+				# Salir si se sale de las coordenadas del tablero
+				if posX + posicionX < 0 or posX + posicionX >= len(tablero[0]):
+					continue
+
 				for posicionY in posicionesAlrededor:
+					# Salir si se sale de las coordenadas del tablero
+					if posY + posicionY < 0 or posY + posicionY >= len(tablero[0]):
+						continue
+
 					casillasDestapadas = floodFill(posX + posicionX, posY + posicionY, tablero, minas, casillasDestapadas)
 
 	return casillasDestapadas
@@ -60,6 +69,7 @@ def colocarMinas(cantidadMinas: int, tablero: list[list[Casilla]], posX: int, po
 			if tablero[i][j]['minas'] != -1:
 				# Contar alrededor de la posición actual
 				posicionesAlrededor = [-1, 0, 1]
+
 				for x in posicionesAlrededor:
 					# Salir si se sale de las coordenadas del tablero
 					if i + x < 0 or i + x >= tamañoTablero:
@@ -78,3 +88,23 @@ def colocarMinas(cantidadMinas: int, tablero: list[list[Casilla]], posX: int, po
 				tablero[i][j]['minas'] = numeroMinas
 
 	return minas
+
+def mostrarTableroConsola(tablero: list[list[Casilla]]):
+	# Recorrer celdas
+	for columnas in tablero:
+		for celda in columnas:
+
+			# Calcular valor a mostrar
+			valor = '🔲'
+			if celda['estado'] == EstadoCasilla.DESTAPADO:
+				valor = '[' + str(celda['minas']) + ']'
+
+			elif celda['estado'] == EstadoCasilla.BANDERA:
+				valor = '🚩'
+
+			elif celda['estado'] == EstadoCasilla.MINA:
+				valor = '💣'
+			
+			print(valor, end='\t')
+		
+		print('\n')

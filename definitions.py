@@ -15,7 +15,7 @@ class EstadoJuego(Enum):
 
 # Atributos de una casilla
 class Casilla(TypedDict):
-	estado: str
+	estado: EstadoCasilla
 	minas: int
 
 # Atributos de una mina
