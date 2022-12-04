@@ -22,3 +22,8 @@ class Casilla(TypedDict):
 class Mina(TypedDict):
 	x: int
 	y: int
+
+class NumeroMinas(Enum):
+    FACIL = 10,
+    MEDIO = 16,
+    DIFICIL = 24

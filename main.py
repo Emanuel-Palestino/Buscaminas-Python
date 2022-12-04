@@ -1,6 +1,32 @@
-from definitions import EstadoJuego, EstadoCasilla, Mina, Casilla
+from classes.VentanaJuego import VentanaJuego
+from definitions import EstadoJuego, EstadoCasilla, Mina, Casilla, NumeroMinas
 from utils import colocarMinas, mostrarTableroConsola, floodFill
 import os
+from flet import (
+    app,
+    Page
+)
+
+
+tableroG = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]]
+
+
+def main(pagina: Page):
+    pagina.title = "Buscaminas" 
+    pagina.scroll = "adaptive"
+    pagina.bgcolor = "#61398A"
+    pagina.window_height= 400
+    pagina.window_width = 500
+    pagina.window_resizable = False
+    pagina.window_center()
+    
+    
+    pagina.add(VentanaJuego())
+    pagina.update()
+    
+    
+
+
 
 def menu():
 	opcion = EstadoJuego.MENU
@@ -69,7 +95,5 @@ def menu():
 			elif movimiento[0] == 's':
 				return
 
-
-
 if __name__ == '__main__':
-	menu()
+	app(target=main, assets_dir="assets")
