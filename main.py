@@ -3,8 +3,23 @@ from definitions import EstadoJuego, EstadoCasilla, Mina, Casilla, NumeroMinas
 from utils import colocarMinas, mostrarTableroConsola, floodFill
 import os
 from flet import (
-    app,
-    Page
+    UserControl,
+    Column,
+    MainAxisAlignment,
+    Image,
+    Row,
+    ElevatedButton,
+    ImageFit,
+    ImageRepeat,
+    Text,
+    Container,
+    padding,
+    Dropdown,
+    TextStyle,
+    dropdown,
+    CrossAxisAlignment,
+    Page,
+    app
 )
 
 
@@ -20,6 +35,9 @@ def main(pagina: Page):
     pagina.window_resizable = False
     pagina.window_center()
     
+    
+
+	
     
     pagina.add(VentanaJuego())
     pagina.update()

@@ -23,7 +23,7 @@ class Mina(TypedDict):
 	x: int
 	y: int
 
-class NumeroMinas(Enum):
+class NumeroMinas:
     FACIL = 10,
     MEDIO = 16,
     DIFICIL = 24
